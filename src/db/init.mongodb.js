@@ -1,13 +1,14 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const {db: {host, name, port}} = require('../config/config.mongodb')
-// const connectString = `mongodb://${host}:${port}/${name}`
-const connectString = 'mongodb+srv://theflash28012002:duchuy28012002@cluster0.i9egyo8.mongodb.net/'
+const connectString = process.env.MONGOOSE_URI
+const MAX_POLL_SIZE = 50;
+const TIME_OUT_CONNECT = 3000;
 
 // const connectString = `mongodb://0.0.0.0:${port}/${name}`
-
+// const connectString = `mongodb://${host}:${port}/${name}`
 // const {countConnect} = require('../helpers/check.connect')
+// const {db: {host, name, port}} = require('../config/config.mongodb')
 
 class Database {
     constructor() {
@@ -16,19 +17,16 @@ class Database {
 
     // connect
     connect(type = 'mongodb'){
-        // if (1 === 1) {
-        //     mongoose.set('debug', true)
-        //     mongoose.set('debug', {color: true})
-        // }
-
-        // ...
-
+        if (1 === 1) {
+            mongoose.set('debug', true);
+            mongoose.set('debug', {color: true});
+        }
         mongoose.connect(connectString, {
-            maxPoolSize: 50
+            serverSelectionTimeoutMS: TIME_OUT_CONNECT,
+            maxPoolSize: MAX_POLL_SIZE
         }).then(_ => {
             console.log(`Connect to MongoDB successfully`);
         }).catch(err => {
-            // console.error(`Error connecting to MongoDB: ${err}`);
             console.log(err)
         });
     }
@@ -42,5 +40,4 @@ class Database {
 }
 
 const instanceMongoDB = Database.getInstance();
-
 module.exports = instanceMongoDB;
