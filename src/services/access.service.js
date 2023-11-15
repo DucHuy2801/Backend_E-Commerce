@@ -17,7 +17,7 @@ const RoleShop = {
   ADMIN: 'ADMIN'
 }
 
-class accessService {
+class AccessService {
   /* Check this token used? */
   static handlerRefreshToken = async (refreshToken) => {
     const foundToken = await KeyTokenService.findByRefreshTokenUsed(refreshToken)
@@ -167,4 +167,4 @@ class accessService {
 
 }
 
-module.exports = accessService
+module.exports = AccessService
