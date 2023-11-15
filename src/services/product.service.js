@@ -1,6 +1,6 @@
 'use strict'
 
-const {product, clothing, electronic} = require('../models/product.model')
+const { product, clothing, electronic } = require('../models/product.model')
 const {BadRequestError} = require('../core/error.response')
 
 // define Factory class to create products
@@ -8,7 +8,7 @@ class ProductFactory {
     /*
         type: 'Clothing'
      */
-    async createProduct(type, payload){
+    static async createProduct(type, payload){
         switch(type) {
             case 'Electronics':
                 return new Electronics(payload).createProduct()
@@ -36,9 +36,8 @@ class Product {
         this.product_attributes = product_attributes;
     }
 
-    // create new product
-    async createProduct(product_id){
-        return await product.create({...this, _id: product_id})
+    async createProduct(){
+        return await product.create(this)
     }
 }
 
@@ -57,22 +56,20 @@ class Clothing extends Product{
 
 // Define sub-class for difference product types Electronics
 class Electronics extends Product{
+    
     async createProduct(){
-        const newElectronic = await electronic.create({
-            ...this.product_attributes,
-            product_shop: this.product_shop
-        })
+        // const newElectronic = await electronic.create({
+        //     ...this.product_attributes,
+        //     product_shop: this.product_shop
+        // })
+        const newElectronic = await electronic.create(this.product_attributes)
         if (!newElectronic) throw new BadRequestError('create new Electronic error')
 
-        const newProduct = await super.createProduct(newElectronic._id)
+        const newProduct = await super.createProduct()
         if (!newProduct) throw new BadRequestError('create new Product error')
 
         return newProduct;
     }
 }
-// nay ban gap loi nay ko
-// 
-const productFactory = new ProductFactory()
-module.exports = {
-    productFactory
-}
+
+module.exports = ProductFactory;
