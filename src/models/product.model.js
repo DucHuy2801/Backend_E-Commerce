@@ -24,9 +24,9 @@ const clothingSchema = new Schema({
     branch: {type: String, require: true},
     size: String,
     material: String,
-    product_shop: {type: Schema.Types.ObjectId, ref: 'Shop'}
+    // product_shop: {type: Schema.Types.ObjectId, ref: 'Shop'}
 }, {
-    collection: 'clothers',
+    collection: 'clothes',
     timestamps: true
 })
 
@@ -46,7 +46,7 @@ const furnitureSchema = new Schema({
     branch: {type: String, require: true},
     size: String,
     material: String,
-    product_shop: {type: Schema.Types.ObjectId, ref: 'Shop'}
+    // product_shop: {type: Schema.Types.ObjectId, ref: 'Shop'}
 }, {
     collection: 'furnitures',
     timestamps: true
