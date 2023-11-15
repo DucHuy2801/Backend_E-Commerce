@@ -3,13 +3,12 @@
 const express = require('express')
 const productController = require('../../controllers/product.controller')
 const router = express.Router()
-const {asyncHandler} = require('../../auth/checkAuth')
-const { authenticationV2 } = require('../../auth/authUtils')
+const { asyncHandler } = require('../../helpers/asyncHandler');
+const { authentication } = require('../../auth/authUtils')
 
 
 // authentication
-// router.use(authenticationV2)
-
+router.use(authentication)
 router.post('', asyncHandler(productController.createProduct))
 
 module.exports = router
