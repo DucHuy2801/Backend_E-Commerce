@@ -13,8 +13,10 @@ const findAllPublishForShop = async ({ query, limit, skip }) => {
 
 const searchProductByUser = async ({ keySearch }) => {
     const regexSearch = new RegExp(keySearch)
-    const results = await product.find(
-        {$text: { $search: regexSearch }}, 
+    const results = await product.find({
+            isPublish: true,
+            $text: { $search: regexSearch 
+        }}, 
         {score: {$meta: 'textScore'}}
     )
     .sort({score: {$meta: 'textScore'}})
