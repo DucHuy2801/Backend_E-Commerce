@@ -9,8 +9,10 @@ const {
     unPublishProductByShop,
     searchProductByUser,
     findAllProducts,
-    findProduct
+    findProduct,
+    updateProductById
 } = require('../models/repositories/product.repo')
+const { removeUnderfinedObject, updateNestedObjectParser } = require('../utils')
 
 // define Factory class to create products
 class ProductFactory {
@@ -30,11 +32,11 @@ class ProductFactory {
         return new productClass(payload).createProduct()
     }
 
-    static async updateProduct(type, payload){
+    static async updateProduct(type, productId, payload){
         const productClass = ProductFactory.productRegistry[type]
         if (!productClass) throw new BadRequestError(`Invalid Product Types ${type}`)
 
-        return new productClass(payload).createProduct()
+        return new productClass(payload).updateProduct(productId)
     }
 
     // PUT
@@ -91,18 +93,48 @@ class Product {
     async createProduct(product_id){
         return await product.create({...this, _id: product_id})
     }
+
+    // update product
+    async updateProduct(productId, bodyUpdate) {
+        return await updateProductById({productId, bodyUpdate, model: product})
+    }
 }
 
 // Define sub-class for difference product types Clothing
 class Clothing extends Product{
-    async createProduct(){
-        const newClothing = await clothing.create(this.product_attributes)
+    async createProduct() {
+        const newClothing = await clothing.create({
+            ...this.product_attributes,
+            product_shop: this.product_shop
+        })
         if (!newClothing) throw new BadRequestError('create new Clothing error')
 
         const newProduct = await super.createProduct()
         if (!newProduct) throw new BadRequestError('create new Product error')
 
         return newProduct;
+    }
+
+    async updateProduct(productId) {
+        /* 
+            {
+                a: underfined,
+                b: null
+            } 
+        */
+       // 1. remove attr has unll underfined
+        const objectParams = removeUnderfinedObject(this)
+       // 2. check xem update where?
+        if (objectParams.product_attributes) {
+            // update child
+            await updateProductById({
+                productId, 
+                bodyUpdate: updateNestedObjectParser(objectParams.product_attributes), 
+                model: product})
+        }
+
+        const updateProduct = await super.updateProduct(productId, updateNestedObjectParser(objectParams))
+        return updateProduct
     }
 }
 
