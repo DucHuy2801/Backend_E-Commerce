@@ -1,6 +1,6 @@
 _Link tham khảo: https://www.dofactory.com/javascript/design-patterns/builder_
 
-# ================================== BUILDER PATTERN =================================== #
+#  BUILDER PATTERN 
 
 The _Builder pattern_ allows a client to construct a complex object by specifying the type and content only. Construction details are hidden from the client entirely.
 
