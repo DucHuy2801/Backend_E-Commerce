@@ -1,6 +1,5 @@
 'use strict'
 
-const ProductService = require("../services/product.service")
 const ProductServiceV2 = require("../services/product.service.xxx")
 const { SuccessResponse } = require("../core/success.response")
 
@@ -24,7 +23,6 @@ class ProductController {
 
     // update product
     updateProduct = async (req, res, next) => {
-        console.log(`productid`, req.params.productId)
         new SuccessResponse({
             message: 'Updating product successfully!',
             metadata: await ProductServiceV2.updateProduct(req.body.product_type, req.params.productId, {
