@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    image: ecommerce-service:1.0
+    container_name: ecommerce-service
+    ports: 
+      - 8080:8080
+    environment:
+      PORT: 8080
+      MONGOOSE_URI: 
+    restart: unless-stopped
+    depends_on:
+      - mongo_db
+  
+
+  mongo_db: 
+    container_name: ec-mongodb
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - 2717:27017
+    volumes:
+      - mongo_db:/data/db
+
+volumes: 
+  mongo_db: {}
