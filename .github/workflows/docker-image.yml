@@ -21,4 +21,9 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      
+    - name: Build and push to Docker Hub
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: duchuy2801/e-commerceapp:latest, duchuy2801/e-commerceapp:latest:${{ github.run_number }}
