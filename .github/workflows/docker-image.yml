@@ -21,10 +21,3 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-    - name: Build and push Docker image
-      uses: docker/build-push-action@b39c6929571c5fb2cd3d2779f2bfaa5a1ccfb7880827f5ce55a14385c5b3e732
-      with:
-        context: .
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
