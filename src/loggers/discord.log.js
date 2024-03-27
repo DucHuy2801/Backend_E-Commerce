@@ -14,7 +14,7 @@ client.on('ready', () => {
     console.log(`Logged is as ${client.user.tag}!`)
 })
 
-const token = 'MTIyMjIxODg3ODczMDM3NTI2OQ.GhgB8N.J5SzgfPT34li_A8ZbdUuxD5WYaROZVhLZG-fb0'
+const token = process.env.TOKEN_DISCORD
 client.login(token)
 
 client.on('messageCreate', msg => {
