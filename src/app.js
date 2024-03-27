@@ -16,8 +16,9 @@ app.use(express.urlencoded({
 
 // init db
 require('./db/init.mongodb')
-const {countConnect} = require('./helpers/check.connect')
-countConnect()
+require("./config/config.redis")
+// const {countConnect} = require('./helpers/check.connect')
+// countConnect()
 // const {checkOverload} = require('./helpers/check.connect')
 // checkOverload()
 

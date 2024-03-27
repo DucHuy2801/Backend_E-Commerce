@@ -1,0 +1,29 @@
+error: 403 - missing email
+{"level":"error","message":"403 - missing email","timestamp":"2024-03-26T08:06:58.756Z"}
+[2024-03-26 10:27:35.397 PM] error: 	403 - missing email
+[2024-03-26 10:29:17.353 PM] error: 	403 - missing email
+[2024-03-27 12:34:12.539 AM] error: 	403 - missing email
+[2024-03-27 12:34:48.694 AM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:35:55.127 AM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:37:43.997 AM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:39:35.681 AM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:43:12.446 AM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:15:38.008 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:41:56.416 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:44:03.980 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:44:51.587 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:45:07.494 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:46:33.113 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:47:34.574 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:47:45.285 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:49:27.870 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:50:01.381 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:50:16.427 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:53:53.874 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:55:35.898 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:57:14.502 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 12:59:58.017 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 01:08:42.611 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 01:27:06.262 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 01:30:34.857 PM] error: 	403 - Error: Shop already registered!
+[2024-03-27 01:36:19.656 PM] error: 	403 - Error: Shop already registered!
